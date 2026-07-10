@@ -1,0 +1,25 @@
+# ── API ──────────────────────────────────────────────────────────────
+fastapi==0.115.6
+uvicorn[standard]==0.34.0
+python-multipart==0.0.20
+pydantic==2.10.4
+
+# ── Audio ────────────────────────────────────────────────────────────
+numpy==1.26.4
+soundfile==0.12.1
+librosa==0.10.2.post1
+noisereduce==3.0.3
+
+# ── ASR + acoustic models ────────────────────────────────────────────
+# faster-whisper: CTranslate2 Whisper — fast word-level ASR.
+faster-whisper==1.1.0
+# transformers + torch: Wav2Vec2 CTC character posteriors (letter GOP,
+# forced alignment, confusion detection). CPU wheels by default; install
+# a CUDA build of torch for GPU.
+torch==2.5.1
+torchaudio==2.5.1
+transformers==4.47.1
+
+# ── Tests ────────────────────────────────────────────────────────────
+pytest==8.3.4
+httpx==0.28.1

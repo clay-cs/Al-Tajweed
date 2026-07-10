@@ -1,0 +1,29 @@
+name: quran_ai
+description: 'Quran AI — read, learn, and perfect your recitation.'
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.3.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+  google_fonts: ^6.2.1
+  dio: ^5.4.3
+  shared_preferences: ^2.2.3
+  audioplayers: ^6.1.0
+  record: ^7.1.1 # microphone recording for Tajweed analysis
+  path_provider: ^2.1.4 # temp dir for the recorded clip
+  permission_handler: ^11.3.1 # runtime mic permission
+  intl: any # pinned by flutter_localizations
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^4.0.0
+
+flutter:
+  uses-material-design: true

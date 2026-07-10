@@ -1,0 +1,205 @@
+@import "tailwindcss";
+
+/* Quran AI admin theme — deep emerald + gold, matching the mobile app. */
+@theme {
+  --color-bg: #0b1512;
+  --color-bg2: #0f1e19;
+  --color-card: #132520;
+  --color-card2: #182e27;
+  --color-line: #1f3a31;
+  --color-ink: #e8f2ee;
+  --color-muted: #8faaa1;
+  --color-primary: #12b587;
+  --color-primary2: #0e9d7b;
+  --color-gold: #e3b23c;
+  --color-danger: #f87171;
+  --color-info: #60a5fa;
+  --color-violet: #a78bfa;
+}
+
+body {
+  background:
+    radial-gradient(1200px 600px at 80% -10%, rgba(18, 181, 135, 0.1), transparent 60%),
+    radial-gradient(900px 500px at -10% 110%, rgba(227, 178, 60, 0.06), transparent 60%),
+    var(--color-bg);
+  color: var(--color-ink);
+  min-height: 100vh;
+}
+
+::placeholder {
+  color: #5e766e;
+}
+
+/* Subtle themed scrollbar. */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-line);
+  border-radius: 8px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #2a4d41;
+}
+
+/* ── Animations ──────────────────────────────────────────────────────── */
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pop-in {
+  from {
+    opacity: 0;
+    transform: scale(0.96) translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translate(-50%, 16px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
+
+@keyframes grow-bar {
+  from {
+    transform: scaleY(0);
+  }
+  to {
+    transform: scaleY(1);
+  }
+}
+
+@keyframes grow-bar-x {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes draw-line {
+  from {
+    stroke-dashoffset: var(--line-len, 1200);
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes chart-fill {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes donut-spin {
+  from {
+    stroke-dasharray: 0 1000;
+  }
+}
+
+@keyframes pulse-dot {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.35;
+  }
+}
+
+.anim-fade-up {
+  animation: fade-up 0.45s cubic-bezier(0.2, 0.8, 0.3, 1) both;
+}
+.anim-pop {
+  animation: pop-in 0.3s cubic-bezier(0.2, 0.8, 0.3, 1) both;
+}
+.anim-toast {
+  animation: slide-up 0.28s cubic-bezier(0.2, 0.8, 0.3, 1) both;
+}
+.anim-bar {
+  transform-origin: bottom;
+  animation: grow-bar 0.7s cubic-bezier(0.2, 0.8, 0.3, 1) both;
+}
+.anim-bar-x {
+  transform-origin: left;
+  animation: grow-bar-x 0.7s cubic-bezier(0.2, 0.8, 0.3, 1) both;
+}
+.anim-line {
+  animation: draw-line 1.2s ease-out both;
+}
+.anim-area {
+  animation: chart-fill 0.9s ease-out 0.35s both;
+}
+.anim-donut {
+  animation: donut-spin 1s cubic-bezier(0.2, 0.8, 0.3, 1) both;
+}
+.anim-pulse {
+  animation: pulse-dot 2s ease-in-out infinite;
+}
+
+/* Staggered entrances: apply .anim-fade-up + .stagger-N. */
+.stagger-1 { animation-delay: 0.04s; }
+.stagger-2 { animation-delay: 0.08s; }
+.stagger-3 { animation-delay: 0.12s; }
+.stagger-4 { animation-delay: 0.16s; }
+.stagger-5 { animation-delay: 0.2s; }
+.stagger-6 { animation-delay: 0.24s; }
+.stagger-7 { animation-delay: 0.28s; }
+.stagger-8 { animation-delay: 0.32s; }
+
+/* Card hover lift. */
+.lift {
+  transition:
+    transform 0.2s cubic-bezier(0.2, 0.8, 0.3, 1),
+    box-shadow 0.2s,
+    border-color 0.2s;
+}
+.lift:hover {
+  transform: translateY(-3px);
+  border-color: rgba(18, 181, 135, 0.35);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .anim-fade-up,
+  .anim-pop,
+  .anim-toast,
+  .anim-bar,
+  .anim-bar-x,
+  .anim-line,
+  .anim-area,
+  .anim-donut,
+  .anim-pulse {
+    animation: none;
+  }
+  .lift,
+  .lift:hover {
+    transform: none;
+  }
+}

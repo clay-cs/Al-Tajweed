@@ -1,0 +1,26 @@
+services:
+  tajweed-ai:
+    build: .
+    image: quran-ai-tajweed:latest
+    ports:
+      - "8001:8001"
+    environment:
+      DEVICE: ${DEVICE:-auto}
+      WHISPER_MODEL: ${WHISPER_MODEL:-small}
+      W2V_MODEL: ${W2V_MODEL:-jonatasgrosman/wav2vec2-large-xlsr-53-arabic}
+      NOISE_REDUCTION: ${NOISE_REDUCTION:-1}
+    volumes:
+      # Persist downloaded model weights across restarts.
+      - tajweed-models:/models
+    restart: unless-stopped
+    # For GPU: uncomment and run with an NVIDIA runtime.
+    # deploy:
+    #   resources:
+    #     reservations:
+    #       devices:
+    #         - driver: nvidia
+    #           count: 1
+    #           capabilities: [gpu]
+
+volumes:
+  tajweed-models:

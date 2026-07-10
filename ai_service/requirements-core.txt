@@ -1,0 +1,6 @@
+# Lightweight subset for running the pure logic + unit tests WITHOUT the
+# multi-GB ML stack. CI and local `pytest` use this; production uses the
+# full requirements.txt.
+numpy==1.26.4
+pydantic==2.10.4
+pytest==8.3.4
